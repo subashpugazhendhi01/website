@@ -34,9 +34,7 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// ============================================
 // SMOOTH SCROLLING FOR ANCHOR LINKS
-// ============================================
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -53,9 +51,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ============================================
 // SCROLL ANIMATIONS
-// ============================================
 
 const observerOptions = {
     threshold: 0.1,
@@ -80,9 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// ============================================
 // SECTION REVEAL ANIMATIONS
-// ============================================
 
 const sectionObserverOptions = {
     threshold: 0.15,
@@ -106,9 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// ============================================
 // ACTIVE NAV LINK ON SCROLL
-// ============================================
+
 
 const sections = document.querySelectorAll('section[id]');
 
@@ -131,9 +124,7 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// ============================================
 // CONTACT FORM HANDLING
-// ============================================
 
 const contactForm = document.getElementById('contactForm');
 
@@ -148,8 +139,6 @@ contactForm.addEventListener('submit', (e) => {
         message: document.getElementById('message').value
     };
 
-    // Here you would typically send the data to a server
-    // For now, we'll just show an alert and reset the form
     console.log('Form submitted:', formData);
     
     // Show success message (you can replace this with a proper notification)
@@ -158,24 +147,14 @@ contactForm.addEventListener('submit', (e) => {
     // Reset form
     contactForm.reset();
     
-    // Optional: You can integrate with email services like EmailJS, Formspree, etc.
-    // Example with EmailJS:
-    // emailjs.send('service_id', 'template_id', formData)
-    //     .then(() => alert('Message sent successfully!'))
-    //     .catch(() => alert('Error sending message. Please try again.'));
 });
 
-// ============================================
 // SET CURRENT YEAR IN FOOTER
-// ============================================
 
 document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-// ============================================
 // PERFORMANCE OPTIMIZATION
-// ============================================
 
-// Lazy load images if any are added in the future
 if ('loading' in HTMLImageElement.prototype) {
     const images = document.querySelectorAll('img[loading="lazy"]');
     images.forEach(img => {
@@ -188,9 +167,6 @@ if ('loading' in HTMLImageElement.prototype) {
     document.body.appendChild(script);
 }
 
-// ============================================
-// ADDITIONAL ENHANCEMENTS
-// ============================================
 
 // Add loading state to buttons
 const buttons = document.querySelectorAll('.btn');
@@ -203,27 +179,22 @@ buttons.forEach(btn => {
     });
 });
 
-// Prevent form resubmission on page refresh
 if (window.history.replaceState) {
     window.history.replaceState(null, null, window.location.href);
 }
 
-// ============================================
-// SCROLL TOGGLE BUTTON
-// ============================================
-
 const scrollToggleBtn = document.getElementById('scrollToggleBtn');
 const scrollToggleIcon = document.getElementById('scrollToggleIcon');
-const SCROLL_THRESHOLD = 100; // Show button and change behavior after scrolling 100px
+const SCROLL_THRESHOLD = 100; 
 
 function updateScrollToggleButton() {
     const scrollY = window.pageYOffset || document.documentElement.scrollTop;
     
     if (scrollY > SCROLL_THRESHOLD) {
-        // Scrolled down - show up arrow and scroll to top behavior
+
         scrollToggleIcon.classList.add('scroll-up');
     } else {
-        // At top - show down arrow and scroll to next section behavior
+ 
         scrollToggleIcon.classList.remove('scroll-up');
     }
 }
@@ -232,16 +203,16 @@ scrollToggleBtn.addEventListener('click', () => {
     const scrollY = window.pageYOffset || document.documentElement.scrollTop;
     
     if (scrollY > SCROLL_THRESHOLD) {
-        // Scroll to top
+        
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         });
     } else {
-        // Scroll to next main section (about)
+    
         const aboutSection = document.getElementById('about');
         if (aboutSection) {
-            const offsetTop = aboutSection.offsetTop - 80; // Account for fixed navbar
+            const offsetTop = aboutSection.offsetTop - 80;
             window.scrollTo({
                 top: offsetTop,
                 behavior: 'smooth'
