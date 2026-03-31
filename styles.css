@@ -121,7 +121,7 @@ body {
 
 .logo-image {
     display: inline-block;
-    height: 46px;
+    height: 56px;
     width: auto;
     max-width: 100%;
     object-fit: contain;
@@ -136,8 +136,9 @@ body {
 
 .logo-subtitle {
     font-size: 0.975rem;
-    font-weight: 500;
-    color: var(--text-light);
+    font-family: "Helvetica Thai Bold", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 700;
+    color: #721011;
     letter-spacing: 0.01em;
     white-space: nowrap;
     line-height: 1;
@@ -152,7 +153,7 @@ body {
     }
 
     .logo-image {
-        height: 40px;
+        height: 48px;
     }
     
     .logo-subtitle {
