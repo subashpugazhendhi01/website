@@ -128,25 +128,42 @@ window.addEventListener('scroll', () => {
 
 const contactForm = document.getElementById('contactForm');
 
-contactForm.addEventListener('submit', (e) => {
+contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
-    // Get form values
-    const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        phone: document.getElementById('phone').value,
-        message: document.getElementById('message').value
-    };
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton ? submitButton.textContent : 'Send Message';
 
-    console.log('Form submitted:', formData);
-    
-    // Show success message (you can replace this with a proper notification)
-    alert('Thank you for your message! We will get back to you soon.');
-    
-    // Reset form
-    contactForm.reset();
-    
+    if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
+    }
+
+    try {
+        const formData = new FormData(contactForm);
+        const response = await fetch(contactForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                Accept: 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Submission failed');
+        }
+
+        alert('Thank you for your message! We will get back to you soon.');
+        contactForm.reset();
+    } catch (error) {
+        alert('Sorry, your message could not be sent. Please try again or email info@structurapoint.com.');
+    } finally {
+        if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText;
+            submitButton.style.opacity = '';
+            submitButton.style.cursor = '';
+        }
+    }
 });
 
 // SET CURRENT YEAR IN FOOTER
