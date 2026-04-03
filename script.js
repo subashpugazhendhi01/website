@@ -155,7 +155,7 @@ contactForm.addEventListener('submit', async (e) => {
         alert('Thank you for your message! We will get back to you soon.');
         contactForm.reset();
     } catch (error) {
-        alert('Sorry, your message could not be sent. Please try again or email info@structurapoint.com.');
+        alert('Sorry, your message could not be sent. Please try again or email hraval290@gmail.com.');
     } finally {
         if (submitButton) {
             submitButton.disabled = false;
